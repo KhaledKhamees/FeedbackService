@@ -1,4 +1,7 @@
 
+using FeedbackService.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace FeedbackService
 {
     public class Program
@@ -13,6 +16,8 @@ namespace FeedbackService
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddDbContext<FeedbackServiceDbContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("FeedbackServiceDbConnection")));
 
             var app = builder.Build();
 
