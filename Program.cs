@@ -18,6 +18,7 @@ namespace FeedbackService
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<FeedbackServiceDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("FeedbackServiceDbConnection")));
+            builder.Services.AddScoped<IRepository, FeedbackRepository>();
 
             var app = builder.Build();
 
